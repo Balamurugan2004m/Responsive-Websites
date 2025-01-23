@@ -9,12 +9,12 @@ A responsive layout showcasing vibrant color categories using HTML, CSS, and Boo
 
 ---
 
-### [Project 2: Chat Page](https://balamurugan2004m.github.io/Responsive-Websites/Chat-Page/)
-A visually engaging chat interface featuring styled message bubbles and responsive design.
+### [Project 2: Responsive Boxes](https://balamurugan2004m.github.io/Responsive-Websites/Chat-Page/)
+A layout showcasing dynamic, responsive boxes with varied sizes using HTML, CSS, and Bootstrap for adaptive design.
 
 ---
 
-### [Project 3: Coding Cover Page](https://balamurugan2004m.github.io/Responsive-Websites/Coding-Cover-Page/)
-A coding-themed cover page with vibrant design and impactful typography to inspire developers.
+### [Project 3: Food Munch Navbar](https://balamurugan2004m.github.io/Responsive-Websites/Coding-Cover-Page/)
+A responsive navigation bar for a food website featuring a logo, dynamic toggler, and multiple menu options built using HTML, CSS, and Bootstrap.
 
 ---
