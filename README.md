@@ -9,12 +9,12 @@ A responsive layout showcasing vibrant color categories using HTML, CSS, and Boo
 
 ---
 
-### [Project 2: Responsive Boxes](https://balamurugan2004m.github.io/Responsive-Websites/Chat-Page/)
+### [Project 2: Responsive Boxes](https://balamurugan2004m.github.io/Responsive-Websites/Responsive-Boxes/)
 A layout showcasing dynamic, responsive boxes with varied sizes using HTML, CSS, and Bootstrap for adaptive design.
 
 ---
 
-### [Project 3: Food Munch Navbar](https://balamurugan2004m.github.io/Responsive-Websites/Coding-Cover-Page/)
+### [Project 3: Food Munch Navbar](https://balamurugan2004m.github.io/Responsive-Websites/Food-Munch-Navbar/)
 A responsive navigation bar for a food website featuring a logo, dynamic toggler, and multiple menu options built using HTML, CSS, and Bootstrap.
 
 ---
