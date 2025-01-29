@@ -19,7 +19,7 @@ A responsive navigation bar for a food website featuring a logo, dynamic toggler
 
 ---
 
-### [Project 4: VR-Website-Navbar-and-Banner-Section](https://balamurugan2004m.github.io/Responsive-Websites/VR-Website-Navbar-and-Banner-Section/)
+### [Project 4: VR Website Navbar and Banner Section](https://balamurugan2004m.github.io/Responsive-Websites/VR-Website-Navbar-and-Banner-Section/)
 A modern, responsive website promoting virtual reality products and experiences with a sleek design and intuitive navigation.
 
 ---
