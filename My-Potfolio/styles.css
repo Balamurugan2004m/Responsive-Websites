@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none !important;
+}
+
+.navbar-bg-color {
+    background-color: #141d24;
+    margin-bottom: -1px;
+}
+
+.navbar-main-logo {
+    font-family: "Roboto";
+    font-size: 30px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #708ad4;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.about-me-bg {
+    background-color: #2e3a47;
+    margin-bottom: -1px;
+    padding-bottom: 48px;
+}
+
+.about-green-heading {
+    color: #cced00;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.About-me-heading {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.about-description-paragraph {
+    color: #9aa5b1;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+
+.about-skills-heading {
+    font-size: 22px;
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+
+
+.about-skills-container {
+    background-color: #323f4b;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.about-skills-bg {
+    background-color: #1f2933;
+    margin-bottom: -1px;
+
+}
+
+.about-image {
+    border-radius: 10px;
+}
+
+.project-bg-container {
+    background-color: #2e3a47;
+    margin-bottom: -1px;
+}
+
+.project-green-heading {
+    color: #cced00;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.project-main-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.project-card-container {
+    background-color: #1f2933;
+    border-radius: 10px;
+}
+
+.project-text-container {
+    padding: 20px;
+}
+
+.project-card-paragraph {
+    color: #9aa5b1;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+.project-card-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 28px;
+}
+
+.project-read-more-element {
+    font-family: "Roboto";
+    color: #cced00;
+    transition: color 0.3s ease-in-out;
+}
+
+.project-read-more-element:hover {
+    color: #cced00;
+    text-decoration: underline;
+}
+
+
+.project-arrow-space {
+    margin-bottom: 2px;
+    margin-top: 5px;
+}
+
+.project-card-image {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.services-bg-container {
+    background-color: #2e3a47;
+    margin-bottom: -1px;
+}
+
+.services-green-heading {
+    color: #cced00;
+    font-size: 24px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.services-main-heading {
+    color: white;
+    font-size: 30px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.services-image {
+    height: 40px;
+}
+
+.services-card-container {
+    padding: 20px;
+    background-color: #1f2933;
+    border-radius: 10px;
+}
+
+.services-course-heading {
+    color: white;
+    font-size: 25px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.services-course-description {
+    color: #9aa5b1;
+    font-size: 20px;
+    font-family: "Roboto";
+}
+
+.footer-bg-container {
+    background-color: #252f3f;
+    margin-bottom: -1px;
+}
+
+.footer-image {
+    height: 80px;
+    width: 80px;
+    border-radius: 80px;
+}
+
+.footer-green-heading {
+    color: #cced00;
+    font-family: "Roboto";
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.footer-info-paragraph {
+    color: #9aa5b1;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+.footer-icon-style {
+    color: #5a7184;
+    font-size: 18px;
+}
+
+.footer-section {
+    background-color: #1e2a38;
+    text-align: center;
+    padding: 10px;
+}
