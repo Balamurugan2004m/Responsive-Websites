@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.home-bg-dark-color {
+    background-color: #0C0521;
+    margin-bottom: -1px;
+}
+
+.home-image {
+    height: 40px;
+}
+
+.home-bottom-section {
+    background-image: url('https://assets.ccbp.in/frontend/responsive-website/landing-section-bg.png');
+    background-size: cover;
+    height: 100vh;
+}
+
+.home-card-container {
+    padding: 30px;
+    text-align: center;
+}
+
+.home-card-heading {
+    color: white;
+    font-size: 28px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.home-flexible-highlighted-word {
+    color: #FFDDA9;
+}
+
+.home-card-paragraph {
+    color: #CBD0D5;
+    font-size: 18px;
+    font-family: "Roboto";
+}
+
+.home-card-button {
+    height: 48px;
+    width: 148px;
+    border-width: 0px;
+    border-style: solid;
+    color: black;
+    font-weight: bold;
+    background-color: #FFDDA9;
+    border-radius: 20px;
+}
+
+.home-toggler-bg {
+    background-color: white;
+}
+
+.logo-bg-container {
+    background-color: #f9fbfe;
+}
+
+.logo-main-heading {
+    text-align: center;
+    color: #323f4b;
+    font-size: 24px;
+    font-family: "Roboto";
+}
+
+.design-and-deliver-card-heading {
+    color: #323f4b;
+    font-size: 28px;
+    font-family: "Roboto";
+}
+
+.design-and-deliver-card-paragraph {
+    color: #7b8794;
+    font-size: 18px;
+    font-family: "Roboto";
+}
+
+.tools-card-heading {
+    color: #323f4b;
+    font-size: 28px;
+    font-family: "Roboto";
+}
+
+.tools-card-paragraph {
+    color: #7b8794;
+    font-size: 18px;
+    font-family: "Roboto";
+}
+
+.features-main-heading {
+    color: #323f4b;
+    font-size: 28px;
+    font-family: "Roboto";
+    font-weight: bold;
+    text-align: center;
+}
+
+.features-paragraph {
+    color: #9aa5b1;
+    font-size: 18px;
+
+    font-family: "Roboto";
+    text-align: center;
+}
+
+.features-image {
+    height: 100px;
+}
+
+.features-card-heading {
+    color: #323f4b;
+    font-size: 25px;
+    font-family: "Roboto";
+}
+
+.features-card-paragraph {
+    color: #7b8794;
+    font-size: 15px;
+    font-family: "Roboto";
+}
+
+.features-text-container {
+    padding-left: 10px;
+}
