@@ -39,7 +39,7 @@ VR Website is a virtual reality platform showcasing immersive 3D experiences, in
 
 ---
 
-### [Project 8: Fylo Landing Page]([https://balafylo.ccbp.tech](https://balamurugan2004m.github.io/Responsive-Websites/Fylo-Landing-Page/))
+### [Project 8: Fylo Landing Page](https://balamurugan2004m.github.io/Responsive-Websites/Fylo-Landing-Page/)
 A fully responsive landing page was built using HTML and CSS for Fylo’s digital storage solution.
 
 ---
