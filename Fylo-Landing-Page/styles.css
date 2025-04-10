@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.bg-background-for-home-page {
+    background-color: #1c2431;
+    margin-bottom: -1px;
+}
+
+
+
+.navbar-image-logo {
+    height: 50px;
+}
+
+.nav-items {
+    color: white !important;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: 100;
+    margin: 5px;
+}
+
+.nav-items:hover {
+    color: white;
+    text-decoration: underline;
+    font-size: 20px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.hero-section-bg-container {
+    background-color: #1c2431;
+    margin-bottom: -2px;
+}
+
+.home-section-heading {
+    color: white;
+    font-size: 28px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+.home-section-paragraph {
+    color: #FAFAFA;
+    font-size: 16px;
+    font-family: "Roboto";
+}
+
+.home-section-button {
+    height: 48px;
+    width: 258px;
+    border-radius: 22px;
+    border-width: 0px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(to right, #61dcd8, #37a3cd);
+}
+
+.home-section-button:hover {
+    background: #61dcd8;
+}
+
+
+.features-section-bg-container {
+    background-image: linear-gradient(#1c2431, #181f2b);
+    padding: 20px;
+}
+
+.features-card-container {
+    text-align: center;
+}
+
+.features-card-heading {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.features-card-paragraph {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 16px;
+}
+
+.feature-card-image {
+    height: 100px;
+}
+
+.product-section-bg-container {
+    background-color: #181f2b;
+    padding: 24px;
+    margin-top: -1px;
+}
+
+.product-heading {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.product-paragraph {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 16px;
+}
+
+.product-anchor-element {
+    color: #4EE1C1;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+.product-anchor-element {
+    color: #4EE1C1;
+}
+
+.product-anchor-element:hover {
+    color: #4EE1C1;
+    text-decoration: none;
+}
+
+.product-anchor-element-span {
+    text-decoration: underline;
+    text-decoration-color: #4EE1C1;
+    text-underline-offset: 8px;
+}
+
+.testimonials-section-bg-container {
+    background-color: #181f2b;
+    padding: 24px;
+    margin-bottom: -1px;
+    margin-top: -1px;
+}
+
+.testimonials-card-container {
+    background-color: #202a3c;
+    padding: 25px;
+    padding-top: 30px;
+    border-radius: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonials-paragraph {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 16px;
+}
+
+.testimonials-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+}
+
+.testimonials-name {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+.testimonials-role {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 14px;
+}
+
+.testimonials-user-details {
+    padding-left: 10px;
+}
+
+.footer-section-bg-container {
+    background-color: #0b1523;
+    padding: 28px;
+}
+
+.footer-icon {
+    color: white;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.footer-address {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 14px;
+}
+
+.footer-paragraph {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 18px;
+}
+
+.footer-icon-social-media {
+    font-size: 20px;
+    margin-right: 25px;
+    color: white;
+    margin: auto;
+}
+
+.footer-icon-container {
+    margin-right: 25px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+
+}
+
+.footer-icon-container:hover {
+    border-color: #4EE1C1;
+    background-color: #4EE1C1;
+}
+
+.get-early-access-card-container {
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #1c2431;
+    margin-top: -120px;
+    margin-bottom: -300px;
+}
+
+.special-card-heading {
+    color: white;
+    font-family: "Roboto";
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.special-card-paragraph {
+    color: #FAFAFA;
+    font-family: "Roboto";
+    font-size: 16px;
+}
+
+.text-input {
+    padding-left: 18px;
+    border-radius: 22px;
+    height: 48px;
+    width: 100%;
+    margin-right: 20px;
+}
+
+.extra-space-for-testimonials {
+    padding-top: 50px;
+    padding-bottom: 140px;
+}
+
+.extra-space-for-footer {
+    padding-top: 230px;
+}
+
+.quote-bg {
+    position: absolute;
+    top: -45px;
+    left: -17px;
+    width: 80px;
+    z-index: 0;
+
+}
+
+.testimonials-wrapper {
+    position: relative;
+}
+
+.product-bg-space {
+    padding-top: 40px;
+}
+
+.features-bg-space {
+    padding-top: 30px;
+}
+
+.home-toggler-bg {
+    background-color: white;
+}
