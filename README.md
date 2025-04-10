@@ -38,3 +38,8 @@ My Portfolio showcases Balamurugan's web development projects, skills, and exper
 VR Website is a virtual reality platform showcasing immersive 3D experiences, interactive simulations, and engaging digital environments.
 
 ---
+
+### [Project 8: Fylo Landing Page]([https://balafylo.ccbp.tech](https://balamurugan2004m.github.io/Responsive-Websites/Fylo-Landing-Page/))
+A fully responsive landing page was built using HTML and CSS for Fylo’s digital storage solution.
+
+---
