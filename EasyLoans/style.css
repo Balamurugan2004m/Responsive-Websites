@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+.home-Page-Navbar-Background-Container {
+    background: linear-gradient(to right, #1f3e77, #367fac);
+    margin-bottom: -1px;
+}
+
+.hero-section-bg-container {
+    background: linear-gradient(to bottom right, #1f3e77, #4ec1e3);
+    height: 100vh;
+}
+
+.nav-bg {
+    background-color: transparent;
+}
+
+.navbar-brand-style {
+    color: white !important;
+    font-family: "Roboto";
+    font-size: 40px;
+}
+
+.nav-item-style {
+    color: white !important;
+    font-family: "Roboto";
+    font-size: 22px;
+}
+
+.home-page-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.home-page-paragraph {
+    color: #edf2ef;
+    font-family: "Roboto";
+    font-size: 20px;
+}
+
+.apply-now-button {
+    height: 50px;
+    width: 160px;
+    color: #1f3e77;
+    background-color: white;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: #2c6294;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.apply-now-button:focus {
+    height: 50px;
+    width: 160px;
+    color: #1f3e77;
+    background-color: white;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: #2c6294;
+    outline: none;
+}
+
+.apply-now-button:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+.Details-Page-bg {
+    background: linear-gradient(to bottom right, #1f3e77, #4ec1e3);
+    height: 100vh;
+}
+
+.details-heading {
+    color: white;
+    font-family: "Roboto";
+    font-size: 20px;
+
+}
+
+.form-container {
+    background-color: #546db8;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.next-button {
+    width: 100px;
+}
+
+.next-button:focus {
+    width: 100px;
+}
+
+.next-button:hover {
+    width: 100px;
+}
+
+
+.input-tag-style {
+    background-color: white;
+    border-radius: 6px;
+    margin-left: 3px;
+    padding-left: 8px;
+    width: 93%;
+    margin-bottom: 20px;
+}
+
+.personalInfo-nav {
+    margin-bottom: -1px;
+}
+
+i {
+    height: 20px;
+    width: 20px;
+}
+
+.input-checkbox {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+}
+
+.label-style {
+    margin-bottom: 20px;
+    color: white;
+    font-family: "Roboto";
+    font-size: 20px;
+}
+
+
+.active-1 {
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    text-decoration-thickness: 1px;
+}

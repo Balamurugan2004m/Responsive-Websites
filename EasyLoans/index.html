@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e4146d3a99.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+</head>
+
+<body>
+    <div id="sectionHome">
+        <div class="home-Page-Navbar-Background-Container pt-3 navbar-light">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+                    <a class="navbar-brand navbar-brand-style" href="#">EasyLoans</a>
+                    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">RATE</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="hero-section-bg-container d-flex flex-column justify-content-start justify-content-lg-center pt-5 pt-lg-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 order-2 order-lg-1 col-lg-6 d-flex flex-column justify-content-center">
+                        <div class="text-center text-lg-left">
+                            <h1 class="home-page-heading">FAST & EASY PERSONAL LOANS</h1>
+                            <p class="home-page-paragraph mt-2">Get the funds you need quickly with our hassle-free personal loans. Competitive rate and flexible repayment option available</p>
+                            <div class="text-center">
+                                <button class="home-page-button apply-now-button mt-2" onclick="display('sectionDetailsPagePersonalInfo')">APPLY NOW</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 order-1 order-lg-2 col-lg-6 d-flex flex-column justify-content-center">
+                        <img src="https://res.cloudinary.com/dmmfmktet/image/upload/v1747014350/ChatGPT_Image_May_12__2025__06_20_29_AM-removebg-preview_m8clor.png" class="w-100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="sectionDetailsPagePersonalInfo">
+        <div class="home-Page-Navbar-Background-Container personalInfo-nav pt-3">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+                    <a class="navbar-brand navbar-brand-style" href="#">EasyLoans</a>
+                    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">RATE</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="Details-Page-bg d-flex flex-column justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <div class="d-flex flex-row justify-content-around">
+                            <span class="details-heading active-1">Personal Info</span>
+                            <span class="details-heading">Bank Details</span>
+                            <span class="details-heading">Loan Detials</span>
+                        </div>
+                        <div class="form-container mt-3 mb-4">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Your Name" class="input-tag-style" />
+                            <i class="fas fa-calendar-alt"></i>
+                            <input type="date" class="input-tag-style" />
+                            <i class="fas fa-flag"></i>
+                            <input type="text" placeholder="Nationality" class="input-tag-style" />
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="E Mail" class="input-tag-style" />
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" placeholder="Phone Number" class="input-tag-style" />
+                            <i class="fas fa-home"></i>
+                            <input type="text" placeholder="Address" class="input-tag-style pr-0" />
+                        </div>
+                        <div class="text-center">
+                            <button class="apply-now-button next-button" onclick="display('sectionDetailsBankInfo')">Next</button>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <img src="https://res.cloudinary.com/dmmfmktet/image/upload/v1747112574/Screenshot_2025-05-13_102330-removebg-preview_umhrio.png" class="d-none d-lg-inline w-100" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="sectionDetailsBankInfo">
+        <div class="home-Page-Navbar-Background-Container personalInfo-nav pt-3">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+                    <a class="navbar-brand navbar-brand-style" href="#">EasyLoans</a>
+                    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">RATE</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="Details-Page-bg d-flex flex-column justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <div class="d-flex flex-row justify-content-around">
+                            <span class="details-heading">Personal Info</span>
+                            <span class="details-heading active-1">Bank Details</span>
+                            <span class="details-heading">Loan Detials</span>
+                        </div>
+                        <div class="form-container mt-3 mb-4">
+                            <i class="fas fa-university"></i>
+                            <input type="text" placeholder="Bank Name" class="input-tag-style" /><br />
+                            <i class="fas fa-id-badge"></i>
+                            <input type="text" placeholder="Account Number" class="input-tag-style icon-special-space" /><br />
+                            <i class="fas fa-key"></i>
+                            <input type="text" placeholder="IFSC Code" class="input-tag-style" /><br />
+                            <i class="fas fa-id-card"></i>
+                            <input type="text" placeholder="Government ID Type" class="input-tag-style" /><br />
+                            <i class="fas fa-upload"></i>
+                            <input type="file" class="input-tag-style icon-special-space p-2" /><br />
+                        </div>
+                        <div class="text-center">
+                            <button onclick="display('sectionDetailsLoanInfo')" class="apply-now-button next-button">Next</button>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <img src="https://res.cloudinary.com/dmmfmktet/image/upload/v1747112574/Screenshot_2025-05-13_102418-removebg-preview_qfh81i.png" class="d-none d-lg-inline w-100 mt-5" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="sectionDetailsLoanInfo">
+        <div class="home-Page-Navbar-Background-Container personalInfo-nav pt-3">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+                    <a class="navbar-brand navbar-brand-style" href="#">EasyLoans</a>
+                    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">RATE</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="Details-Page-bg d-flex flex-column justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="d-flex flex-row justify-content-around">
+                            <span class="details-heading">Personal Info</span>
+                            <span class="details-heading">Bank Details</span>
+                            <span class="details-heading active-1">Loan Detials</span>
+                        </div>
+                        <div class="form-container mt-3 mb-4">
+                            <i class="fas fa-coins"></i>
+                            <input type="number" placeholder="Loan Amount Requested" class="input-tag-style" /> <br />
+                            <i class="fas fa-clipboard-list"></i>
+                            <input type="text" placeholder="Loan Purpose" class="input-tag-style icon-special-space" /><br />
+                            <i class="fas fa-hourglass-half"></i>
+                            <input type="number" placeholder="Loan Tenure (Months)" class="input-tag-style icon-special-space" /><br />
+                            <i class="fas fa-briefcase"></i>
+                            <input type="text" placeholder="Employment Type" class="input-tag-style" /><br />
+                            <i class="fas fa-money-bill-wave"></i>
+                            <input type="number" placeholder="Monthly Income" class="input-tag-style" /><br />
+                            <i class="fas fa-business-time"></i>
+                            <input type="text" placeholder="Duration Of Employment" class="input-tag-style icon-special-space-reduce" /><br />
+                        </div>
+                        <div class="text-center">
+                            <button onclick="display('sectionTermsandConditions')" class="apply-now-button next-button">Next</button>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <img src="https://res.cloudinary.com/dmmfmktet/image/upload/v1747112572/Screenshot_2025-05-13_102351-removebg-preview_k0fqbn.png" class="d-none d-lg-inline w-100 image-position" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="sectionTermsandConditions">
+        <div class="home-Page-Navbar-Background-Container personalInfo-nav pt-3">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light nav-bg">
+                    <a class="navbar-brand navbar-brand-style" href="#">EasyLoans</a>
+                    <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">HOME <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">ABOUT</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">RATE</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link nav-item-style" href="#">CONTACT</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="Details-Page-bg d-flex flex-column justify-content-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="d-flex flex-row justify-content-start">
+                            <h1 class="details-heading">Terms & Conditions</h1>
+                        </div>
+                        <div class="form-container mt-2 mb-4">
+                            <input type="checkbox" name="terms" id="termsandconditions" class="input-checkbox" />
+                            <label for="termsandconditions" class="label-style">
+                                Agree To The Terms & Conditions
+                            </label><br />
+                            <input type="checkbox" name="creditScore" id="creditscoreverification" class="input-checkbox" />
+                            <label for="creditscoreverification" class="label-style">
+                                I Authorize Credit Score Verification
+                            </label><br />
+                            <input type="checkbox" name="dataConsent" id="datasharingverification" class="input-checkbox" />
+                            <label for="datasharingverification" class="label-style">
+                                I Consent To Data Sharing For Verification
+                            </label>
+                        </div>
+                        <div class="text-center">
+                            <button class="apply-now-button next-button" onclick="display('sectionHome')">Submit</button>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-block col-12 col-lg-6 d-flex flex-column justify-content-center">
+                        <div>
+                            <img src="https://res.cloudinary.com/dmmfmktet/image/upload/v1747114039/Screenshot_2025-05-13_103924-removebg-preview_gtz7w7.png" class="d-none d-lg-inline w-100" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
+</body>
+
+</html>
