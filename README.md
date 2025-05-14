@@ -30,7 +30,7 @@ Food Munch is a food delivery website offering a variety of delicious meals with
 ---
 
 ### [Project 6: My-Potfolio](https://balamurugan2004m.github.io/Responsive-Websites/My-Potfolio/)
-My Portfolio showcases Balamurugan's web development projects, skills, and expertise in a simple and professional manner.
+My Portfolio showcases Balamurugan's web development projects, skills, and expertise simply and professionally.
 
 ---
 
@@ -41,5 +41,10 @@ VR Website is a virtual reality platform showcasing immersive 3D experiences, in
 
 ### [Project 8: Fylo Landing Page](https://balamurugan2004m.github.io/Responsive-Websites/Fylo-Landing-Page/)
 A fully responsive landing page was built using HTML and CSS for Fylo’s digital storage solution.
+
+---
+
+### [Project 9: EasyLoans](https://balamurugan2004m.github.io/Responsive-Websites/EasyLoans/)
+A clean and user-friendly loan application interface designed to simplify the borrowing process with seamless navigation and modern UI elements.
 
 ---
