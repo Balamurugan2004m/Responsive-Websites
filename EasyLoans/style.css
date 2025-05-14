@@ -75,7 +75,7 @@
 .details-heading {
     color: white;
     font-family: "Roboto";
-    font-size: 20px;
+    font-size: 18px;
 
 }
 
@@ -103,7 +103,7 @@
     border-radius: 6px;
     margin-left: 3px;
     padding-left: 8px;
-    width: 93%;
+    width: 90%;
     margin-bottom: 20px;
 }
 
@@ -126,7 +126,7 @@ i {
     margin-bottom: 20px;
     color: white;
     font-family: "Roboto";
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
