@@ -92,20 +92,16 @@
                     <div class="col-12 col-lg-6 d-flex flex-column justify-content-center">
                         <div class="d-flex flex-row justify-content-around">
                             <span class="details-heading active-1">Personal Info</span>
-                            <span class="details-heading">Bank Details</span>
+                            <span class="details-heading">KYC</span>
                             <span class="details-heading">Loan Detials</span>
                         </div>
-                        <div class="form-container mt-3 mb-4">
+                        <div class="form-container mt-4 mb-4">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Your Name" class="input-tag-style" />
-                            <i class="fas fa-calendar-alt"></i>
-                            <input type="date" class="input-tag-style" />
-                            <i class="fas fa-flag"></i>
-                            <input type="text" placeholder="Nationality" class="input-tag-style" />
+                            <input type="text" placeholder="Your Name" class="input-tag-style" /><br />
                             <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="E Mail" class="input-tag-style" />
+                            <input type="email" placeholder="E Mail" class="input-tag-style" /><br />
                             <i class="fas fa-phone"></i>
-                            <input type="tel" placeholder="Phone Number" class="input-tag-style" />
+                            <input type="tel" placeholder="Phone Number" class="input-tag-style" /><br />
                             <i class="fas fa-home"></i>
                             <input type="text" placeholder="Address" class="input-tag-style pr-0" />
                         </div>
@@ -155,20 +151,20 @@
                     <div class="col-12 col-lg-6 d-flex flex-column justify-content-center ">
                         <div class="d-flex flex-row justify-content-around">
                             <span class="details-heading">Personal Info</span>
-                            <span class="details-heading active-1">Bank Details</span>
+                            <span class="details-heading active-1">KYC</span>
                             <span class="details-heading">Loan Detials</span>
                         </div>
-                        <div class="form-container mt-3 mb-4">
-                            <i class="fas fa-university"></i>
-                            <input type="text" placeholder="Bank Name" class="input-tag-style" /><br />
-                            <i class="fas fa-id-badge"></i>
-                            <input type="text" placeholder="Account Number" class="input-tag-style icon-special-space" /><br />
-                            <i class="fas fa-key"></i>
-                            <input type="text" placeholder="IFSC Code" class="input-tag-style" /><br />
-                            <i class="fas fa-id-card"></i>
-                            <input type="text" placeholder="Government ID Type" class="input-tag-style" /><br />
-                            <i class="fas fa-upload"></i>
-                            <input type="file" class="input-tag-style icon-special-space p-2" /><br />
+                        <div class="form-container mt-4 mb-4">
+                            <label class="label-style-formal" for="documents">Documents</label>
+                            <select class="input-tag-style p-2 special-label" id="documents">
+                                <option>Aadhaar Card</option>
+                                <option>Pan Card</option>
+                                <option>Driving License</option>
+                            </select><br />
+                            <label class="label-style-formal" for="upload-file">Front Side</label>
+                            <input type="file" class="input-tag-style p-2" id="upload-file" /><br />
+                            <label class="label-style-formal" for="upload-file">Back Side</label>
+                            <input type="file" class="input-tag-style p-2" id="upload-file" /><br />
                         </div>
                         <div class="text-center">
                             <button onclick="display('sectionDetailsLoanInfo')" class="apply-now-button next-button">Next</button>
@@ -216,25 +212,32 @@
                     <div class="col-12 col-lg-6">
                         <div class="d-flex flex-row justify-content-around">
                             <span class="details-heading">Personal Info</span>
-                            <span class="details-heading">Bank Details</span>
+                            <span class="details-heading">KYC</span>
                             <span class="details-heading active-1">Loan Detials</span>
                         </div>
-                        <div class="form-container mt-3 mb-4">
+                        <div class="form-container mt-4 mb-4">
                             <i class="fas fa-coins"></i>
                             <input type="number" placeholder="Loan Amount Requested" class="input-tag-style" /> <br />
                             <i class="fas fa-clipboard-list"></i>
-                            <input type="text" placeholder="Loan Purpose" class="input-tag-style icon-special-space" /><br />
+                            <select class="input-tag-style icon-special-space special-label" id="loanType">
+                                <option>Personal loan</option>
+                                <option>Bike loan</option>
+                                <option>Home loan</option>
+                                <option>Business loan</option>
+                                <option>Education loan</option>
+                                <option>Others</option>
+                            </select><br />
+                            <div id="othersInput" style="display: none;">
+                                <i class="fas fa-clipboard-list"></i>
+                                <input type="text" placeholder="Others" class="input-tag-style" id="others-purpose" />
+                                <br />
+                            </div>
                             <i class="fas fa-hourglass-half"></i>
-                            <input type="number" placeholder="Loan Tenure (Months)" class="input-tag-style icon-special-space" /><br />
-                            <i class="fas fa-briefcase"></i>
-                            <input type="text" placeholder="Employment Type" class="input-tag-style" /><br />
-                            <i class="fas fa-money-bill-wave"></i>
-                            <input type="number" placeholder="Monthly Income" class="input-tag-style" /><br />
-                            <i class="fas fa-business-time"></i>
-                            <input type="text" placeholder="Duration Of Employment" class="input-tag-style icon-special-space-reduce" /><br />
+                            <input type="number" placeholder="Duration (Months)" class="input-tag-style icon-special-space" /><br />
+
                         </div>
                         <div class="text-center">
-                            <button onclick="display('sectionTermsandConditions')" class="apply-now-button next-button">Next</button>
+                            <button onclick="display('sectionTermsandConditions')" class="apply-now-button next-button">Submit</button>
                         </div>
                     </div>
                     <div class="d-none d-lg-block col-12 col-lg-6 d-flex flex-column justify-content-center">
@@ -245,6 +248,7 @@
 
         </div>
     </div>
+<<<<<<< HEAD
     <div id="sectionTermsandConditions">
         <div class="home-Page-Navbar-Background-Container personalInfo-nav pt-3">
             <div class="container">
@@ -308,6 +312,9 @@
 
         </div>
     </div>
+=======
+    <script src="loan-form.js"></script>
+>>>>>>> d3da518 (change for loan website updated)
     <script type="text/javascript" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-static-website/js/ccbp-ui-kit.js"></script>
 </body>
 
