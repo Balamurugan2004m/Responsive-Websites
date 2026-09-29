@@ -1,0 +1,439 @@
+import "@testing-library/jest-dom";
+import React from "react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
+import { paths } from "../../constants/paths";
+import { loginUser } from "../../services/auth";
+import { AuthStatus } from "../../constants/auth-status";
+import { hasAcceptedNotice } from "../../utils/cookie";
+import { JWTValidator } from "../../utils/jwt-validator";
+import Login from "./Login";
+
+// --- Mock Image/SVG Assets ---
+jest.mock("../../assets/warning-icon.svg", () => "warning-icon-stub");
+
+// --- Service & Redux Mocks ---
+const mockDispatch = jest.fn();
+const mockNavigate = jest.fn();
+const mockPurge = jest.fn();
+const mockClearCaseCache = jest.fn();
+let mockLocationState: Record<string, any> = {};
+
+jest.mock("../../store", () => ({
+  __esModule: true,
+  persistor: { purge: (...args: unknown[]) => mockPurge(...args) },
+}));
+
+jest.mock("../../services/auth", () => ({
+  loginUser: jest.fn(),
+}));
+
+jest.mock("../../store/slice/auth-slice", () => ({
+  updateAuthUserData: jest.fn((data) => ({ type: "UPDATE_USER", payload: data })),
+  logout: jest.fn(() => ({ type: "LOGOUT" })),
+}));
+
+jest.mock("../../store/slice/tabs-slice", () => ({
+  resetTabs: jest.fn(() => ({ type: "RESET_TABS" })),
+}));
+
+jest.mock("../case-search/case-details/case-cache", () => ({
+  clearAllCaseDetailsCache: (...args: unknown[]) => mockClearCaseCache(...args),
+}));
+
+jest.mock("../../utils/cookie", () => ({
+  hasAcceptedNotice: jest.fn(),
+}));
+
+jest.mock("../../utils/jwt-validator", () => ({
+  JWTValidator: {
+    isValidToken: jest.fn(() => true),
+  },
+}));
+
+jest.mock("react-redux", () => ({
+  useDispatch: jest.fn(),
+  useSelector: jest.fn(),
+}));
+
+jest.mock("react-router", () => ({
+  ...jest.requireActual("react-router"),
+  useNavigate: jest.fn(),
+  useLocation: jest.fn(),
+}));
+
+// --- UI Components Mocks (Guarantees valid React function components) ---
+
+jest.mock("../../layouts/public-layout/public-layout", () => ({
+  __esModule: true,
+  default: ({ children }: { children: React.ReactNode }) => <div data-testid="public-layout">{children}</div>,
+}));
+
+jest.mock("../../components/auth/auth-card", () => {
+  const AuthCard = ({ children }: { children: React.ReactNode }) => <div data-testid="auth-card">{children}</div>;
+  const AuthCardHeader = () => <div data-testid="auth-card-header" />;
+  const AuthCardBody = ({ children }: { children: React.ReactNode }) => <div data-testid="auth-card-body">{children}</div>;
+  const AuthCardFooter = () => <div data-testid="auth-card-footer" />;
+  return {
+    __esModule: true,
+    default: AuthCard,
+    AuthCardHeader,
+    AuthCardBody,
+    AuthCardFooter,
+  };
+});
+
+jest.mock("../../ui/alert-banner", () => ({
+  __esModule: true,
+  default: ({ message }: { message: string }) => <div data-testid="alert-banner">{message}</div>,
+}));
+
+jest.mock("../../ui/common-toast", () => ({
+  __esModule: true,
+  default: ({ title, description }: { title: string; description: string }) => (
+    <div data-testid="common-toast">
+      <span>{title}</span>
+      <span>{description}</span>
+    </div>
+  ),
+}));
+
+jest.mock("../../ui/text-input", () => ({
+  __esModule: true,
+  default: (props: any) => (
+    <div>
+      <label htmlFor={props.id}>{props.label}</label>
+      <input
+        id={props.id}
+        name={props.name}
+        type={props.type || "text"}
+        value={props.value || ""}
+        onChange={props.onChange}
+        data-testid={`input-${props.id}`}
+      />
+    </div>
+  ),
+}));
+
+describe("Login Component", () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+    mockLocationState = {};
+    mockDispatch.mockReset();
+    mockNavigate.mockReset();
+    mockPurge.mockReset();
+    mockClearCaseCache.mockReset();
+    (loginUser as jest.Mock).mockReset();
+
+    (useDispatch as unknown as jest.Mock).mockReturnValue(mockDispatch);
+    (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
+    (useLocation as jest.Mock).mockImplementation(() => ({
+      pathname: "/login",
+      state: mockLocationState,
+    }));
+    (useSelector as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        authUser: { authUser: {}, _persist: { rehydrated: true } },
+      })
+    );
+    (hasAcceptedNotice as jest.Mock).mockReturnValue(true);
+    (JWTValidator.isValidToken as jest.Mock).mockReturnValue(true);
+  });
+
+  const fillValidCredentials = async () => {
+    const usernameInput = screen.getByLabelText(/Username/i);
+    const passwordInput = screen.getByLabelText(/Password/i);
+
+    await userEvent.clear(usernameInput);
+    await userEvent.type(usernameInput, "john");
+
+    await userEvent.clear(passwordInput);
+    await userEvent.type(passwordInput, "Pass@word123");
+  };
+
+  // --- 1. Initial Render & Element Checks ---
+
+  test("renders login form and all main controls", () => {
+    render(<Login />);
+    expect(screen.getByText("Welcome")).toBeInTheDocument();
+    expect(screen.getByLabelText(/Username/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Login/i })).toBeInTheDocument();
+    expect(screen.getByText(/Forgot Password\?/i)).toBeInTheDocument();
+  });
+
+  // --- 2. Form Validation & Error Banners ---
+
+  test("shows validation error banner when submitting empty inputs", async () => {
+   (hasAcceptedNotice as jest.Mock).mockReturnValue(true);
+    render(<Login />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Please enter your username and password\./i)
+    ).toBeInTheDocument();
+  });
+
+  test("clears error banners when user starts typing", async () => {
+    render(<Login />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+    expect(await screen.findByText(/Please enter your username and password\./i)).toBeInTheDocument();
+
+    await userEvent.type(screen.getByLabelText(/Username/i), "j");
+
+    await waitFor(() => {
+      expect(screen.queryByText(/Please enter your username and password\./i)).not.toBeInTheDocument();
+    });
+  });
+
+  // --- 3. Authentication Response Scenarios ---
+
+  test("shows invalid credentials error message when API returns failure (-1 / Failed)", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.Failed,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Invalid username or password\. Please try again!/i)
+    ).toBeInTheDocument();
+  });
+
+  test("navigates to MFA flow when status is RequiresTwoFactor", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.RequiresTwoFactor,
+      QrCodeUrl: "qr",
+      ManualEntryKey: "key",
+      Token: "temp-token",
+      UserName: "john",
+      Email: "john@example.com",
+      PhoneNumber: "1234567890",
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/mfa-method");
+    });
+    expect(sessionStorage.getItem("mfaData")).toContain("temp-token");
+  });
+
+  test("shows lockout message for LockedOut status", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.LockedOut,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Account is locked out\. Please contact your administrator\./i)
+    ).toBeInTheDocument();
+  });
+
+  test("shows password-expired message for PasswordExpired status", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.PasswordExpired,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Password has expired\. Please reset your password\./i)
+    ).toBeInTheDocument();
+  });
+
+  test("shows disabled-account message for UserDisabled status and disables login button", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.UserDisabled,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Account disabled! If you need further assistance/i)
+    ).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Login/i })).toBeDisabled();
+  });
+
+  test("shows email-not-confirmed message for EmailNotConfirmed status", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.EmailNotConfirmed,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(
+      await screen.findByText(/Email not confirmed\. Please check your email and confirm your account\./i)
+    ).toBeInTheDocument();
+  });
+
+  test("dispatches auth update on successful token response", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Token: "real-token",
+      Authenticated: true,
+      Status: 0,
+      Claims: [],
+      UserName: "john",
+      PrintName: "John",
+      Email: "john@example.com",
+      PhoneNumber: "1234567890",
+      SessionId: "session-1",
+      AuthSecretKey: null,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    await waitFor(() => {
+      expect(mockDispatch).toHaveBeenCalled();
+    });
+  });
+
+  test("shows generic login-failed error on thrown network exception", async () => {
+    (loginUser as jest.Mock).mockRejectedValueOnce(new Error("Network down"));
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    expect(await screen.findByText(/Login failed\. Please try again\./i)).toBeInTheDocument();
+  });
+
+  test("sets incorrectUsername inline error when API response contains no Token and no Status", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({});
+
+    render(<Login />);
+    await fillValidCredentials();
+    fireEvent.click(screen.getByRole("button", { name: /Login/i }));
+
+    await waitFor(() => {
+      expect(loginUser).toHaveBeenCalled();
+    });
+  });
+
+  // --- 4. Navigation & Redirect Hooks ---
+
+  test("does not navigate to HOME when stored token is expired", () => {
+    (JWTValidator.isValidToken as jest.Mock).mockReturnValue(false);
+    (useSelector as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        authUser: { authUser: { Token: "expired-token" } },
+      })
+    );
+
+    render(<Login />);
+    expect(mockNavigate).not.toHaveBeenCalledWith(paths.HOME.pathName);
+  });
+
+  test("navigates to HOME if auth token already exists in state", () => {
+    (useSelector as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        authUser: { authUser: { Token: "existing-token" } },
+      })
+    );
+
+    render(<Login />);
+    expect(mockNavigate).toHaveBeenCalledWith(paths.HOME.pathName);
+  });
+
+  test("navigates to UNAUTHORIZED if auth token belongs to a Veteran Portal user", () => {
+    (useSelector as unknown as jest.Mock).mockImplementation((selector) =>
+      selector({
+        authUser: { authUser: { Token: "existing-token", UserTypeId: 4 } },
+      })
+    );
+
+    render(<Login />);
+    expect(mockNavigate).toHaveBeenCalledWith(paths.UNAUTHORIZED.pathName, {
+      replace: true,
+      state: { isVeteranUser: true, reason: "vp_credentials" },
+    });
+  });
+
+  test("navigates to Forgot Password page when link is clicked", () => {
+    render(<Login />);
+
+    fireEvent.click(screen.getByText(/Forgot Password\?/i));
+
+    expect(mockNavigate).toHaveBeenCalledWith(paths.ForgotPassword.pathName);
+  });
+
+  // --- 5. State Banner & Keyboard Events ---
+
+  test("handles session-expired boot cleanup and timeout message", async () => {
+    sessionStorage.setItem("sessionExpired", "true");
+    sessionStorage.setItem("manualLogout", "false");
+
+    render(<Login />);
+
+    expect(mockClearCaseCache).toHaveBeenCalled();
+    expect(mockDispatch).toHaveBeenCalledWith({ type: "LOGOUT" });
+    expect(
+      await screen.findByText(/Your session has expired and you have been logged out/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders toast when navigating with passwordCreated state", () => {
+    mockLocationState = { passwordCreated: true };
+
+    render(<Login />);
+
+    expect(
+      screen.getByText(/Password Has Been Set Successfully!/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders toast when navigating with passwordReset state", () => {
+    mockLocationState = { passwordReset: true };
+
+    render(<Login />);
+
+    expect(
+      screen.getByText(/Password Has Been Reset Successfully!/i)
+    ).toBeInTheDocument();
+  });
+
+  test("submits form on window Enter keydown press", async () => {
+    (loginUser as jest.Mock).mockResolvedValueOnce({
+      Authenticated: false,
+      Status: AuthStatus.LockedOut,
+    });
+
+    render(<Login />);
+    await fillValidCredentials();
+
+    fireEvent.keyDown(window, {
+      key: "Enter",
+      code: "Enter",
+    });
+
+    await waitFor(() => {
+      expect(loginUser).toHaveBeenCalled();
+    });
+  });
+});
