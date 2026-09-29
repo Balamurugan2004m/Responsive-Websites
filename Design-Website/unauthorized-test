@@ -1,0 +1,122 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import Unauthorized from './unauthorized';
+import { MemoryRouter } from 'react-router';
+
+const mockedUsedNavigate = jest.fn();
+let mockLocationState: any = null;
+const mockDispatch = jest.fn();
+const mockLogout = jest.fn();
+
+jest.mock('react-router', () => ({
+    ...jest.requireActual('react-router'),
+    useNavigate: () => mockedUsedNavigate,
+    useLocation: () => ({
+        state: mockLocationState,
+        pathname: '/unauthorized',
+    }),
+}));
+
+let mockAuthUser: any = null;
+
+jest.mock('react-redux', () => ({
+    useDispatch: () => mockDispatch,
+    useSelector: (selector: any) => selector({ authUser: { authUser: mockAuthUser } }),
+}));
+
+jest.mock('../../hooks/use-auth', () => ({
+    useAuth: () => ({
+        logout: mockLogout,
+        isAuthenticated: false,
+    }),
+}));
+
+describe('Unauthorized Component', () => {
+    beforeEach(() => {
+        mockedUsedNavigate.mockClear();
+        mockDispatch.mockClear();
+        mockLogout.mockClear();
+        mockLocationState = null;
+        mockAuthUser = null;
+    });
+
+    it('renders standard 403 page when not a Veteran Portal user', () => {
+        render(
+            <MemoryRouter>
+                <Unauthorized />
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText(/403/i)).toBeInTheDocument();
+        expect(screen.getByText(/Unauthorized Access/i)).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /Go Back/i })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /Go Home/i })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: /Logout/i })).toBeInTheDocument();
+    });
+
+    it('navigates to /home on Go Home click for regular unauthorized users', () => {
+        render(
+            <MemoryRouter>
+                <Unauthorized />
+            </MemoryRouter>
+        );
+
+        fireEvent.click(screen.getByRole('button', { name: /Go Home/i }));
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/home');
+    });
+
+    it('displays ONLY the Logout button when user is a Veteran Portal user', () => {
+        mockLocationState = { isVeteranUser: true, reason: 'vp_credentials' };
+
+        render(
+            <MemoryRouter>
+                <Unauthorized />
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText(/Veteran Portal Account Detected/i)).toBeInTheDocument();
+        expect(screen.getByText(/Access Restricted/i)).toBeInTheDocument();
+
+        // Exactly one button should be rendered: Logout
+        const buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(1);
+        expect(buttons[0]).toHaveTextContent(/Logout/i);
+
+        // "Go Back" and "Go Home" must NOT be in the document
+        expect(screen.queryByRole('button', { name: /Go Back/i })).toBeNull();
+        expect(screen.queryByRole('button', { name: /Go Home/i })).toBeNull();
+    });
+
+    it('displays ONLY the Logout button when Redux authUser has UserTypeId: 4', () => {
+        mockAuthUser = { UserTypeId: 4, Token: 'test-token' };
+
+        render(
+            <MemoryRouter>
+                <Unauthorized />
+            </MemoryRouter>
+        );
+
+        expect(screen.getByText(/Veteran Portal Account Detected/i)).toBeInTheDocument();
+        const buttons = screen.getAllByRole('button');
+        expect(buttons).toHaveLength(1);
+        expect(buttons[0]).toHaveTextContent(/Logout/i);
+    });
+
+    it('handles logout click for Veteran Portal users and redirects to /login', async () => {
+        mockLocationState = { isVeteranUser: true, reason: 'vp_credentials' };
+
+        render(
+            <MemoryRouter>
+                <Unauthorized />
+            </MemoryRouter>
+        );
+
+        const logoutBtn = screen.getByRole('button', { name: /Logout/i });
+        fireEvent.click(logoutBtn);
+
+        await waitFor(() => {
+            expect(mockLogout).toHaveBeenCalled();
+            expect(mockDispatch).toHaveBeenCalled();
+            expect(mockedUsedNavigate).toHaveBeenCalledWith('/login', { replace: true });
+        });
+    });
+});
