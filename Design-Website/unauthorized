@@ -1,0 +1,180 @@
+import { Box, Typography, Button, Paper, Alert } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router';
+import { useTheme } from '@mui/material/styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { paths } from '../../constants/paths';
+import { useAuth } from '../../hooks/use-auth';
+import { RootState } from '../../store';
+import { logout as logoutAction } from '../../store/slice/auth-slice';
+import { isVeteranPortalUser } from '../../utils/user-identity';
+
+const UnauthorizedPage: React.FC = () => {
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { logout } = useAuth();
+  const { authUser } = useSelector((state: RootState) => state.authUser);
+
+  const isDark = theme.palette.mode === 'dark';
+  const requiredRoles = location.state?.requiredRoles || [];
+  const isVeteranUser =
+    Boolean(location.state?.isVeteranUser) ||
+    location.state?.reason === 'vp_credentials' ||
+    isVeteranPortalUser(authUser);
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  const handleGoHome = () => {
+    navigate(paths.HOME.pathName);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch {
+      // Silently handle any auth service logout error
+    } finally {
+      dispatch(logoutAction());
+      sessionStorage.clear();
+      localStorage.clear();
+      navigate(paths.LOGIN.pathName, { replace: true });
+    }
+  };
+
+  return (
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        bgcolor: isDark ? 'grey.900' : 'grey.50',
+        p: 2,
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          p: 4,
+          maxWidth: 500,
+          width: '100%',
+          textAlign: 'center',
+          bgcolor: isDark ? 'grey.800' : 'white',
+        }}
+      >
+        {isVeteranUser ? (
+          <>
+            <Alert
+              severity="warning"
+              sx={{ mb: 3, textAlign: 'left' }}
+            >
+              <Typography variant="h6" component="div" gutterBottom>
+                Veteran Portal Account Detected
+              </Typography>
+              <Typography variant="body2">
+                You have logged in using a Veteran Portal account. Veteran accounts cannot access the MDE4Vets internal staff application.
+              </Typography>
+            </Alert>
+
+            <Typography variant="h4" component="h1" gutterBottom color="error">
+              403
+            </Typography>
+
+            <Typography variant="h5" component="h2" gutterBottom>
+              Access Restricted
+            </Typography>
+
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              You do not have permission to access MDE4Vets internal pages or services with this credential.
+            </Typography>
+
+            {/* Display ONLY the Logout button for Veteran Portal users */}
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="contained"
+                onClick={handleLogout}
+                color="error"
+                size="large"
+                sx={{ minWidth: 140 }}
+              >
+                Logout
+              </Button>
+            </Box>
+
+            <Typography variant="caption" display="block" sx={{ mt: 3, color: 'text.secondary' }}>
+              Please log in with an authorized MDE4Vets staff account.
+            </Typography>
+          </>
+        ) : (
+          <>
+            <Alert
+              severity="warning"
+              sx={{ mb: 3, textAlign: 'left' }}
+            >
+              <Typography variant="h6" component="div" gutterBottom>
+                Access Denied
+              </Typography>
+              <Typography variant="body2">
+                You don't have permission to access this page.
+              </Typography>
+            </Alert>
+
+            <Typography variant="h4" component="h1" gutterBottom color="error">
+              403
+            </Typography>
+
+            <Typography variant="h5" component="h2" gutterBottom>
+              Unauthorized Access
+            </Typography>
+
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+              You don't have the required permissions to access this resource.
+            </Typography>
+
+            {requiredRoles.length > 0 && (
+              <Box sx={{ mb: 3, p: 2, bgcolor: 'grey.100', borderRadius: 1 }}>
+                <Typography variant="body2" color="text.secondary">
+                  Required roles: {requiredRoles.join(', ')}
+                </Typography>
+              </Box>
+            )}
+
+            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Button
+                variant="contained"
+                onClick={handleGoBack}
+                color="primary"
+              >
+                Go Back
+              </Button>
+
+              <Button
+                variant="outlined"
+                onClick={handleGoHome}
+              >
+                Go Home
+              </Button>
+
+              <Button
+                variant="text"
+                onClick={handleLogout}
+                color="error"
+              >
+                Logout
+              </Button>
+            </Box>
+
+            <Typography variant="caption" display="block" sx={{ mt: 3, color: 'text.secondary' }}>
+              If you believe this is an error, please contact your administrator.
+            </Typography>
+          </>
+        )}
+      </Paper>
+    </Box>
+  );
+};
+
+export default UnauthorizedPage;
